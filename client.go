@@ -32,17 +32,18 @@ func createMongoDBClient(uri string) *mongoDBClient {
 	return &mongoDBClient{client, cancel}
 }
 
-func (client *mongoDBClient) create(w http.ResponseWriter, r *http.Request) {
+func (mongo_db *mongoDBClient) create(w http.ResponseWriter, r *http.Request) {
+	// mongo_db.client.Database("calendar").Collection("event").InsertOne()
 }
 
-func (client *mongoDBClient) read(w http.ResponseWriter, r *http.Request) {
-
+func (mongo_db *mongoDBClient) read(w http.ResponseWriter, r *http.Request) {
+	// mongo_db.client.Database("calendar").Collection("event").?
 }
 
-func (client *mongoDBClient) update(w http.ResponseWriter, r *http.Request) {
-
+func (mongo_db *mongoDBClient) update(w http.ResponseWriter, r *http.Request) {
+	// mongo_db.client.Database("calendar").Collection("event").ReplaceOne()
 }
 
-func (client *mongoDBClient) delete(w http.ResponseWriter, r *http.Request) {
-
+func (mongo_db *mongoDBClient) delete(w http.ResponseWriter, r *http.Request) {
+	// mongo_db.client.Database("calendar").Collection("event").DeleteOne()
 }

@@ -18,7 +18,7 @@ func main() {
 		w.Write([]byte("welcome"))
 	})
 
-	r.Route("/mongo", func(r chi.Router) {
+	r.Route("/events", func(r chi.Router) {
 		r.Put("/", dbc.create)
 		r.Get("/", dbc.read)
 		r.Patch("/", dbc.update)

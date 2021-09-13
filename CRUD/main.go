@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/go-chi/chi"
@@ -21,10 +22,11 @@ func main() {
 
 	r.Route("/events", func(r chi.Router) {
 		r.Put("/", dbc.Create)
-		r.Get("/", dbc.Read)
+		r.Get("/{id}", dbc.Read)
 		r.Patch("/", dbc.Update)
 		r.Delete("/", dbc.Delete)
 	})
 
+	log.Print("Server listening on port 3000...")
 	http.ListenAndServe(":3000", r)
 }

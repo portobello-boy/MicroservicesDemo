@@ -12,31 +12,31 @@ var y = date.getFullYear();
 var data = [
     // {
     //     title: "test",
-    //     start: new Date(y, m, d),
-    //     end: new Date(y, m, d + 1),
+    //     startTime: new Date(y, m, d),
+    //     endTime: new Date(y, m, d + 1),
     //     allDay: false
     //     url: "http://www...."
-    //     guests: ["John Doe", ...]
+    //     attendees: ["John Doe", ...]
     // },
     {
         title: "Birthday",
-        start: new Date(y, m, d),
+        startTime: new Date(y, m, d),
         allDay: true,
     },
     {
         title: "Daily Standup",
-        start: new Date(y, m, d, 10, 0),
-        end: new Date(y, m, d, 10, 15),
+        startTime: new Date(y, m, d, 10, 0),
+        endTime: new Date(y, m, d, 10, 15),
     },
     {
         title: "Sprint Planning",
-        start: new Date(y, m, d + 1, 14),
-        end: new Date(y, m, d + 1, 15),
+        startTime: new Date(y, m, d + 1, 14),
+        endTime: new Date(y, m, d + 1, 15),
         url: "blah"
     },
     {
         title: "Vacation",
-        start: new Date(y, m, d + 2),
+        startTime: new Date(y, m, d + 2),
         allDay: true
     },
 

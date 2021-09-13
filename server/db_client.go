@@ -1,4 +1,4 @@
-package main
+package server
 
 import (
 	"context"
@@ -10,12 +10,12 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 )
 
-type mongoDBClient struct {
+type MongoDBClient struct {
 	client *mongo.Client
 	Close  context.CancelFunc
 }
 
-func createMongoDBClient(uri string) *mongoDBClient {
+func CreateMongoDBClient(uri string) *MongoDBClient {
 	client, err := mongo.NewClient(options.Client().ApplyURI(uri))
 	if err != nil {
 		log.Fatal(err)
@@ -29,21 +29,22 @@ func createMongoDBClient(uri string) *mongoDBClient {
 	if err != nil {
 		log.Fatal(err)
 	}
-	return &mongoDBClient{client, cancel}
+
+	return &MongoDBClient{client, cancel}
 }
 
-func (mongo_db *mongoDBClient) create(w http.ResponseWriter, r *http.Request) {
+func (mongo_db *MongoDBClient) Create(w http.ResponseWriter, r *http.Request) {
 	// mongo_db.client.Database("calendar").Collection("event").InsertOne()
 }
 
-func (mongo_db *mongoDBClient) read(w http.ResponseWriter, r *http.Request) {
+func (mongo_db *MongoDBClient) Read(w http.ResponseWriter, r *http.Request) {
 	// mongo_db.client.Database("calendar").Collection("event").?
 }
 
-func (mongo_db *mongoDBClient) update(w http.ResponseWriter, r *http.Request) {
+func (mongo_db *MongoDBClient) Update(w http.ResponseWriter, r *http.Request) {
 	// mongo_db.client.Database("calendar").Collection("event").ReplaceOne()
 }
 
-func (mongo_db *mongoDBClient) delete(w http.ResponseWriter, r *http.Request) {
+func (mongo_db *MongoDBClient) Delete(w http.ResponseWriter, r *http.Request) {
 	// mongo_db.client.Database("calendar").Collection("event").DeleteOne()
 }

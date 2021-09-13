@@ -5,13 +5,14 @@ import (
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
+	"github.com/portobello-boy/MicroservicesDemo/server"
 )
 
 func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 
-	dbc := createMongoDBClient("<ATLAS_URI_HERE>")
+	dbc := server.CreateMongoDBClient("mongodb://localhost:27017")
 	defer dbc.Close()
 
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
@@ -19,10 +20,10 @@ func main() {
 	})
 
 	r.Route("/events", func(r chi.Router) {
-		r.Put("/", dbc.create)
-		r.Get("/", dbc.read)
-		r.Patch("/", dbc.update)
-		r.Delete("/", dbc.delete)
+		r.Put("/", dbc.Create)
+		r.Get("/", dbc.Read)
+		r.Patch("/", dbc.Update)
+		r.Delete("/", dbc.Delete)
 	})
 
 	http.ListenAndServe(":3000", r)

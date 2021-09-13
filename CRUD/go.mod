@@ -1,4 +1,4 @@
-module github.com/portobello-boy/MicroservicesDemo/Controller
+module github.com/portobello-boy/MicroservicesDemo/CRUD
 
 go 1.16
 

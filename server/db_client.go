@@ -38,7 +38,7 @@ func (mongo_db *MongoDBClient) Create(w http.ResponseWriter, r *http.Request) {
 }
 
 func (mongo_db *MongoDBClient) Read(w http.ResponseWriter, r *http.Request) {
-	// mongo_db.client.Database("calendar").Collection("event").?
+	// mongo_db.client.Database("calendar").Collection("event").Find()
 }
 
 func (mongo_db *MongoDBClient) Update(w http.ResponseWriter, r *http.Request) {

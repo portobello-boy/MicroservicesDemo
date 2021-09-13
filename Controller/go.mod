@@ -1,4 +1,4 @@
-module github.com/portobello-boy/MicroservicesDemo
+module github.com/portobello-boy/MicroservicesDemo/Controller
 
 go 1.16
 

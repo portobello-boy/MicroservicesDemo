@@ -5,7 +5,7 @@ import (
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
-	"github.com/portobello-boy/MicroservicesDemo/server"
+	"github.com/portobello-boy/MicroservicesDemo/Controller/server"
 )
 
 func main() {

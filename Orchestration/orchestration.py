@@ -4,10 +4,31 @@ import json
 
 app = Flask(__name__)
 
-@app.route('/enrich/', methods=['POST'])
+@app.get('/health')
+def health():
+    resp = Response('Healthy',status=200)
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    print('Healthy')
+    return resp
+
+def enrich_options(resp):
+    resp.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    resp.headers['Access-Control-Allow-Methods'] = 'POST, OPTIONS'
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    resp.data = 'OPTIONS, POST'
+    return resp
+
+@app.route('/enrich/', methods=['POST','OPTIONS'])
 def enrich():
     resp = Response("")
+    resp.headers['found'] = 'true'
+    print(request.method,request.data,request.headers)
+    if request.method == 'OPTIONS':
+        return enrich_options(resp)
     resp.headers['content-type'] = 'application/json'
+    # resp.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    # resp.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+    resp.headers['Access-Control-Allow-Origin'] = '*'
 
     body = request.json
     if body['type'] == 'getAllEvents':
@@ -32,4 +53,4 @@ def enrich():
 
 
 if __name__ == '__main__':
-    app.run(port=3001)
+    app.run(host='0.0.0.0', port=3001)

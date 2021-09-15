@@ -16,8 +16,8 @@ func main() {
 	dbc := server.CreateMongoDBClient("mongodb://localhost:27017")
 	defer dbc.Close()
 
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("welcome"))
+	r.Get("/health", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Healthy"))
 	})
 
 	r.Route("/events", func(r chi.Router) {

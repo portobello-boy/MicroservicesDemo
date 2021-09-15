@@ -6,11 +6,13 @@ import (
 )
 
 type Event struct {
-	Title     string    `json:title`
-	URL       string    `json:url`
-	StartTime time.Time `json:startTime`
-	EndTime   time.Time `json:endTime`
-	Attendees []Person  `json:attendees`
+	ObjectID  string    `json:"_id"        bson:"_id"`
+	Title     string    `json:"title"      bson:"title"`
+	URL       string    `json:"url"        bson:"url"`
+	StartTime time.Time `json:"startTime"  bson:"starttime"`
+	EndTime   time.Time `json:"endTime"    bson:"endtime"`
+	AllDay    bool      `json:"allDay"     bson:"allday"`
+	Attendees []Person  `json:"attendees"  bson:"attendees"`
 }
 
 func (e *Event) Duration() time.Duration {

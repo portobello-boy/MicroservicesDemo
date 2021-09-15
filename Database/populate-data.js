@@ -25,18 +25,18 @@ var data = [
     },
     {
         title: "Daily Standup",
-        startTime: new Date(y, m, d, 10, 0),
-        endTime: new Date(y, m, d, 10, 15),
+        startTime: new Date(y, m, d, 10, 0).toISOString(),
+        endTime: new Date(y, m, d, 10, 15).toISOString(),
     },
     {
         title: "Sprint Planning",
-        startTime: new Date(y, m, d + 1, 14),
-        endTime: new Date(y, m, d + 1, 15),
+        startTime: new Date(y, m, d + 1, 14).toISOString(),
+        endTime: new Date(y, m, d + 1, 15).toISOString(),
         url: "blah"
     },
     {
         title: "Vacation",
-        startTime: new Date(y, m, d + 2),
+        startTime: new Date(y, m, d + 2).toISOString(),
         allDay: true
     },
 

@@ -32,19 +32,29 @@ def enrich():
 
     body = request.json
     if body['type'] == 'getAllEvents':
-        resp.data = client.get('http://localhost:3000/events/').text
+        events = json.loads(client.get('http://localhost:3000/events/').text)
+        for e in events:
+            e['enriched'] = True
+        resp.data = json.dumps(events)
+        
     elif body['type'] == 'getEvent':
         objectID = body['eventData']['_id']
-        resp.data = client.get(f'http://localhost:3000/events/{objectID}').text
+        event = json.loads(client.get(f'http://localhost:3000/events/{objectID}').text)
+        event['enriched'] = True
+        resp.data = json.dumps(event)
+
     elif body['type'] == 'createEvent':
         eventData = json.dumps(body['eventData'])
         resp.data = client.put(f'http://localhost:3000/events/',data=eventData).text
+
     elif body['type'] == 'updateEvent':
         eventData = json.dumps(body['eventData'])
         resp.data = client.patch(f'http://localhost:3000/events/',data=eventData).text
+
     elif body['type'] == 'deleteEvent':
         objectID = body['eventData']['_id']
         resp.data = client.delete(f'http://localhost:3000/events/{objectID}').text
+
     else:
         resp.status_code = 500
         resp.data = "Invalid request type"

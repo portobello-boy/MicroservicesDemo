@@ -1,11 +1,15 @@
-FROM node
+FROM node:latest as node
 
-COPY package.json package-lock.json ./
+WORKDIR /app
 
-RUN npm i
+COPY package.json /app/package.json
 
-RUN npm i --save @angular/cli
+RUN npm install
 
-COPY . .
+RUN npm install -g @angular/cli
 
-RUN ng serve
+COPY . /app
+
+EXPOSE 4200
+
+CMD ng serve --host 0.0.0.0

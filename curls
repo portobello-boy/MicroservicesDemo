@@ -1,0 +1,18 @@
+curl --location --request GET 'localhost:3000/events/'
+
+
+curl --location --request POST 'localhost:3001/enrich/' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "type": "getAllEvents"
+}'
+
+
+curl --location --request POST 'localhost:3001/enrich/' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "type": "getEvent",
+    "eventData": {
+        "_id": "61424e30332c5a8d5050010a"
+    }
+}'
